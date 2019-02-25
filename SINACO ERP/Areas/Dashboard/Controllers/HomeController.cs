@@ -19,7 +19,7 @@ namespace SINACO_ERP.Areas.Dashboard.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application";
+            ViewBag.Message = "Your";
 
             return View();
         }
