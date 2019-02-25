@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="612abafa759f41d0858a7671e63b9aad" Name="Diagram1" ZoomLevel="90">
+        <EntityTypeShape EntityType="SinacoERPModel.AspNetRole" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.AspNetUserClaim" Width="1.5" PointX="9.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.AspNetUserLogin" Width="1.5" PointX="9.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.AspNetUser" Width="1.5" PointX="7.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_Address" Width="1.5" PointX="7.5" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_Cities" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_Clinet" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_ClinetContactPerson" Width="1.5" PointX="12" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_Company" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_CompanyType" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_Countries" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_Department" Width="1.5" PointX="10.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_DepDesgnation" Width="1.5" PointX="10.5" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_EmpAttendance" Width="1.5" PointX="15" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_EmpAttendanceList" Width="1.5" PointX="17.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_Employees" Width="1.5" PointX="12.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_EmployeeTransfer" Width="1.5" PointX="12" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_EmployeeTypes" Width="1.5" PointX="7.5" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_EmpTypeDeptMap" Width="1.5" PointX="17.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_Project" Width="1.5" PointX="15" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_Religon" Width="1.5" PointX="10.5" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_Sites" Width="1.5" PointX="9.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinacoERPModel.civ_States" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="SinacoERPModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_AspNetUsers_civ_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Clinet_AspNetUser" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Clinet_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Sites_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Sites_Modifyby" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Address_civ_Cities" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Clinet_civ_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Employees_civ_PerAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Employees_civ_TempAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Sites_civ_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Cities_civ_States" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Sites_civ_Cities" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_ClinetContactPerson_civ_ClinetContactPerson" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Company_civ_CompanyType" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Department_civ_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_EmpAttendance_civ_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Employees_civ_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_EmployeeTransfer_civ_Company1" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_EmployeeTypes_civ_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Project_civ_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Sites_civ_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_States_civ_States" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_DepDesgnation_civ_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Employees_civ_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_EmpTypeDeptMap_civ_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Employees_civ_DepDesgnation" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_EmpAttendance_civ_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_EmpAttendanceList_civ_EmpAttendance" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Employees_civ_Relation" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Religon" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_ReportTo" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_EmployeeTransfer_civ_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_EmployeeTransfer_civ_Sites" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_EmpTypeDeptMap_civ_EmployeeTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.FK_civ_Project_civ_Sites" ManuallyRouted="false" />
+        <AssociationConnector Association="SinacoERPModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

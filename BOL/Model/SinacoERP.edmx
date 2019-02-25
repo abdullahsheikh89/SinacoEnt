@@ -1,0 +1,2297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SinacoERPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="PageSize" Type="int" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="ZipCode" Type="char" MaxLength="32" />
+          <Property Name="PhoneNo1" Type="varchar" MaxLength="56" />
+          <Property Name="PhoneNo2" Type="varchar" MaxLength="56" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="56" />
+          <Property Name="CityIDFK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_Cities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="StateIDFK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_Clinet">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="56" />
+          <Property Name="Fax" Type="varchar" MaxLength="56" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="NTN" Type="varchar" MaxLength="56" />
+          <Property Name="AddressIDFK" Type="int" Nullable="false" />
+          <Property Name="CompanyIDFK" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreadtedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_ClinetContactPerson">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="char" MaxLength="56" Nullable="false" />
+          <Property Name="Email" Type="varbinary" MaxLength="64" />
+          <Property Name="PhoneNo1" Type="char" MaxLength="56" />
+          <Property Name="PhoneNo2" Type="char" MaxLength="56" />
+          <Property Name="Comments" Type="varchar" MaxLength="512" />
+          <Property Name="ClientIDFK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="56" />
+          <Property Name="Address" Type="varchar" MaxLength="512" />
+          <Property Name="City" Type="varchar" MaxLength="56" />
+          <Property Name="State" Type="varchar" MaxLength="56" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="16" />
+          <Property Name="Email" Type="varchar" MaxLength="56" />
+          <Property Name="HomePhone" Type="varchar" MaxLength="56" />
+          <Property Name="WorkPhone" Type="varchar" MaxLength="56" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="56" />
+          <Property Name="Fax" Type="varchar" MaxLength="56" />
+          <Property Name="DefaultPageSize" Type="int" />
+          <Property Name="CompanyImage" Type="varchar" MaxLength="56" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Country" Type="varchar" MaxLength="56" />
+          <Property Name="ContactPersonFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="ContactPersonLastName" Type="varchar" MaxLength="50" />
+          <Property Name="WebURL" Type="varchar" MaxLength="56" />
+          <Property Name="NTN" Type="varchar" MaxLength="56" />
+          <Property Name="CompanyTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_CompanyType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="56" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="CompanyIDFK" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_DepDesgnation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Desgnation" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="DepartmentIDFK" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_EmpAttendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimeIn" Type="datetime" Nullable="false" />
+          <Property Name="TimeOut" Type="datetime" />
+          <Property Name="IsAvailable" Type="bit" Nullable="false" />
+          <Property Name="Bonus_hours" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Pelanty_hours" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Working_hours" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="Comments" Type="varbinary" MaxLength="256" />
+          <Property Name="Created_date" Type="datetime" />
+          <Property Name="EmpIDFK" Type="int" Nullable="false" />
+          <Property Name="CompanyIDFK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_EmpAttendanceList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimeIn" Type="datetime" />
+          <Property Name="TimeOut" Type="datetime" />
+          <Property Name="EmpAttdIDFk" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_Employees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="EmpCode" Type="varchar" MaxLength="56" />
+          <Property Name="FatherName" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="DeptIDFK" Type="int" Nullable="false" />
+          <Property Name="DesIDFK" Type="int" Nullable="false" />
+          <Property Name="Cnic" Type="char" MaxLength="13" Nullable="false" />
+          <Property Name="DesiredSalary" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Salary" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="HourRate" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ReportTo" Type="int" />
+          <Property Name="JoiningDate" Type="datetime" Nullable="false" />
+          <Property Name="Dob" Type="datetime" />
+          <Property Name="ReligionIDFK" Type="int" Nullable="false" />
+          <Property Name="PerAddIDFK" Type="int" />
+          <Property Name="TempAddIDFK" Type="int" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="Dependents" Type="int" />
+          <Property Name="EmergencyPersonName" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="EmPhoneNo" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="RelationShip" Type="varchar" MaxLength="56" />
+          <Property Name="RelationId" Type="int" />
+          <Property Name="EmpPic" Type="nvarchar(max)" />
+          <Property Name="EmpCV" Type="nvarchar(max)" />
+          <Property Name="CompanyIDFK" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsMate" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_EmployeeTransfer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteIDFK" Type="int" Nullable="false" />
+          <Property Name="ProjectIDFK" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="EmployeeIDFK" Type="int" Nullable="false" />
+          <Property Name="CompanyIDFK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_EmployeeTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeType" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CompanyIDFK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_EmpTypeDeptMap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeptIDFK" Type="int" Nullable="false" />
+          <Property Name="EmpTypeIDFK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectName" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CompanyIDFK" Type="int" Nullable="false" />
+          <Property Name="SiteIDFK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_Religon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReligonName" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_Sites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteName" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="512" />
+          <Property Name="Lat" Type="decimal" Precision="12" Scale="9" />
+          <Property Name="Long" Type="decimal" Precision="12" Scale="9" />
+          <Property Name="AddressIDFK" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifedBy" Type="int" Nullable="false" />
+          <Property Name="ModifedDate" Type="datetime" Nullable="false" />
+          <Property Name="CompanyIDFK" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ClientIDFK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civ_States">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="CountryIDFK" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AspNetUsers_civ_Company">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Address_civ_Cities">
+          <End Role="civ_Cities" Type="Self.civ_Cities" Multiplicity="1" />
+          <End Role="civ_Address" Type="Self.civ_Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Address">
+              <PropertyRef Name="CityIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Cities_civ_States">
+          <End Role="civ_States" Type="Self.civ_States" Multiplicity="1" />
+          <End Role="civ_Cities" Type="Self.civ_Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_States">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Cities">
+              <PropertyRef Name="StateIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Clinet_AspNetUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="civ_Clinet" Type="Self.civ_Clinet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Clinet">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Clinet_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="civ_Clinet" Type="Self.civ_Clinet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Clinet">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Clinet_civ_Address">
+          <End Role="civ_Address" Type="Self.civ_Address" Multiplicity="1" />
+          <End Role="civ_Clinet" Type="Self.civ_Clinet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Clinet">
+              <PropertyRef Name="AddressIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_ClinetContactPerson_civ_ClinetContactPerson">
+          <End Role="civ_Clinet" Type="Self.civ_Clinet" Multiplicity="1" />
+          <End Role="civ_ClinetContactPerson" Type="Self.civ_ClinetContactPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Clinet">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="civ_ClinetContactPerson">
+              <PropertyRef Name="ClientIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Company_civ_CompanyType">
+          <End Role="civ_CompanyType" Type="Self.civ_CompanyType" Multiplicity="1" />
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_CompanyType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Company">
+              <PropertyRef Name="CompanyTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Department_civ_Company">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="civ_Department" Type="Self.civ_Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="civ_Department">
+              <PropertyRef Name="CompanyIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_DepDesgnation_civ_Department">
+          <End Role="civ_Department" Type="Self.civ_Department" Multiplicity="1" />
+          <End Role="civ_DepDesgnation" Type="Self.civ_DepDesgnation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_DepDesgnation">
+              <PropertyRef Name="DepartmentIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmpAttendance_civ_Company">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="civ_EmpAttendance" Type="Self.civ_EmpAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="civ_EmpAttendance">
+              <PropertyRef Name="CompanyIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmpAttendance_civ_Employees">
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="1" />
+          <End Role="civ_EmpAttendance" Type="Self.civ_EmpAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_EmpAttendance">
+              <PropertyRef Name="EmpIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmpAttendanceList_civ_EmpAttendance">
+          <End Role="civ_EmpAttendance" Type="Self.civ_EmpAttendance" Multiplicity="1" />
+          <End Role="civ_EmpAttendanceList" Type="Self.civ_EmpAttendanceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_EmpAttendance">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_EmpAttendanceList">
+              <PropertyRef Name="EmpAttdIDFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Employees_civ_Company">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="civ_Employees">
+              <PropertyRef Name="CompanyIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Employees_civ_Department">
+          <End Role="civ_Department" Type="Self.civ_Department" Multiplicity="1" />
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Employees">
+              <PropertyRef Name="DeptIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Employees_civ_DepDesgnation">
+          <End Role="civ_DepDesgnation" Type="Self.civ_DepDesgnation" Multiplicity="1" />
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_DepDesgnation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Employees">
+              <PropertyRef Name="DesIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Employees_civ_PerAddress">
+          <End Role="civ_Address" Type="Self.civ_Address" Multiplicity="0..1" />
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Employees">
+              <PropertyRef Name="PerAddIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Employees_civ_Relation">
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="0..1" />
+          <End Role="civ_Employees1" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Employees1">
+              <PropertyRef Name="RelationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Employees_civ_TempAddress">
+          <End Role="civ_Address" Type="Self.civ_Address" Multiplicity="0..1" />
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Employees">
+              <PropertyRef Name="TempAddIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmployeeTransfer_civ_Company1">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="civ_EmployeeTransfer" Type="Self.civ_EmployeeTransfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="civ_EmployeeTransfer">
+              <PropertyRef Name="CompanyIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmployeeTransfer_civ_Project">
+          <End Role="civ_Project" Type="Self.civ_Project" Multiplicity="1" />
+          <End Role="civ_EmployeeTransfer" Type="Self.civ_EmployeeTransfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_EmployeeTransfer">
+              <PropertyRef Name="ProjectIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmployeeTransfer_civ_Sites">
+          <End Role="civ_Sites" Type="Self.civ_Sites" Multiplicity="1" />
+          <End Role="civ_EmployeeTransfer" Type="Self.civ_EmployeeTransfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_EmployeeTransfer">
+              <PropertyRef Name="SiteIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmployeeTypes_civ_Company">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="civ_EmployeeTypes" Type="Self.civ_EmployeeTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="civ_EmployeeTypes">
+              <PropertyRef Name="CompanyIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmpTypeDeptMap_civ_Department">
+          <End Role="civ_Department" Type="Self.civ_Department" Multiplicity="1" />
+          <End Role="civ_EmpTypeDeptMap" Type="Self.civ_EmpTypeDeptMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_EmpTypeDeptMap">
+              <PropertyRef Name="DeptIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmpTypeDeptMap_civ_EmployeeTypes">
+          <End Role="civ_EmployeeTypes" Type="Self.civ_EmployeeTypes" Multiplicity="1" />
+          <End Role="civ_EmpTypeDeptMap" Type="Self.civ_EmpTypeDeptMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_EmployeeTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_EmpTypeDeptMap">
+              <PropertyRef Name="EmpTypeIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Project_civ_Project">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="civ_Project" Type="Self.civ_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="civ_Project">
+              <PropertyRef Name="CompanyIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Project_civ_Sites">
+          <End Role="civ_Sites" Type="Self.civ_Sites" Multiplicity="1" />
+          <End Role="civ_Project" Type="Self.civ_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Project">
+              <PropertyRef Name="SiteIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Religon">
+          <End Role="civ_Religon" Type="Self.civ_Religon" Multiplicity="1" />
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Religon">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Employees">
+              <PropertyRef Name="ReligionIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_ReportTo">
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="0..1" />
+          <End Role="civ_Employees1" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Employees1">
+              <PropertyRef Name="ReportTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Sites_civ_Address">
+          <End Role="civ_Address" Type="Self.civ_Address" Multiplicity="1" />
+          <End Role="civ_Sites" Type="Self.civ_Sites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Sites">
+              <PropertyRef Name="AddressIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Sites_civ_Cities">
+          <End Role="civ_Cities" Type="Self.civ_Cities" Multiplicity="1" />
+          <End Role="civ_Sites" Type="Self.civ_Sites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Sites">
+              <PropertyRef Name="ClientIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Sites_civ_Company">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="civ_Sites" Type="Self.civ_Sites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="civ_Sites">
+              <PropertyRef Name="CompanyIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Sites_CreatedBy">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="civ_Sites" Type="Self.civ_Sites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Sites">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Sites_Modifyby">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="civ_Sites" Type="Self.civ_Sites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Sites">
+              <PropertyRef Name="ModifedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_States_civ_States">
+          <End Role="civ_Countries" Type="Self.civ_Countries" Multiplicity="1" />
+          <End Role="civ_States" Type="Self.civ_States" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Countries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_States">
+              <PropertyRef Name="CountryIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SinacoERPModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_Address" EntityType="Self.civ_Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_Cities" EntityType="Self.civ_Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_Clinet" EntityType="Self.civ_Clinet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_ClinetContactPerson" EntityType="Self.civ_ClinetContactPerson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_Company" EntityType="Self.civ_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_CompanyType" EntityType="Self.civ_CompanyType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_Countries" EntityType="Self.civ_Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_Department" EntityType="Self.civ_Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_DepDesgnation" EntityType="Self.civ_DepDesgnation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_EmpAttendance" EntityType="Self.civ_EmpAttendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_EmpAttendanceList" EntityType="Self.civ_EmpAttendanceList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_Employees" EntityType="Self.civ_Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_EmployeeTransfer" EntityType="Self.civ_EmployeeTransfer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_EmployeeTypes" EntityType="Self.civ_EmployeeTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_EmpTypeDeptMap" EntityType="Self.civ_EmpTypeDeptMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_Project" EntityType="Self.civ_Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_Religon" EntityType="Self.civ_Religon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_Sites" EntityType="Self.civ_Sites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="civ_States" EntityType="Self.civ_States" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AspNetUsers_civ_Company" Association="Self.FK_AspNetUsers_civ_Company">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Address_civ_Cities" Association="Self.FK_civ_Address_civ_Cities">
+            <End Role="civ_Cities" EntitySet="civ_Cities" />
+            <End Role="civ_Address" EntitySet="civ_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Cities_civ_States" Association="Self.FK_civ_Cities_civ_States">
+            <End Role="civ_States" EntitySet="civ_States" />
+            <End Role="civ_Cities" EntitySet="civ_Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Clinet_AspNetUser" Association="Self.FK_civ_Clinet_AspNetUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="civ_Clinet" EntitySet="civ_Clinet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Clinet_AspNetUsers" Association="Self.FK_civ_Clinet_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="civ_Clinet" EntitySet="civ_Clinet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Clinet_civ_Address" Association="Self.FK_civ_Clinet_civ_Address">
+            <End Role="civ_Address" EntitySet="civ_Address" />
+            <End Role="civ_Clinet" EntitySet="civ_Clinet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_ClinetContactPerson_civ_ClinetContactPerson" Association="Self.FK_civ_ClinetContactPerson_civ_ClinetContactPerson">
+            <End Role="civ_Clinet" EntitySet="civ_Clinet" />
+            <End Role="civ_ClinetContactPerson" EntitySet="civ_ClinetContactPerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Company_civ_CompanyType" Association="Self.FK_civ_Company_civ_CompanyType">
+            <End Role="civ_CompanyType" EntitySet="civ_CompanyType" />
+            <End Role="civ_Company" EntitySet="civ_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Department_civ_Company" Association="Self.FK_civ_Department_civ_Company">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="civ_Department" EntitySet="civ_Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_DepDesgnation_civ_Department" Association="Self.FK_civ_DepDesgnation_civ_Department">
+            <End Role="civ_Department" EntitySet="civ_Department" />
+            <End Role="civ_DepDesgnation" EntitySet="civ_DepDesgnation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmpAttendance_civ_Company" Association="Self.FK_civ_EmpAttendance_civ_Company">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="civ_EmpAttendance" EntitySet="civ_EmpAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmpAttendance_civ_Employees" Association="Self.FK_civ_EmpAttendance_civ_Employees">
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+            <End Role="civ_EmpAttendance" EntitySet="civ_EmpAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmpAttendanceList_civ_EmpAttendance" Association="Self.FK_civ_EmpAttendanceList_civ_EmpAttendance">
+            <End Role="civ_EmpAttendance" EntitySet="civ_EmpAttendance" />
+            <End Role="civ_EmpAttendanceList" EntitySet="civ_EmpAttendanceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Employees_civ_Company" Association="Self.FK_civ_Employees_civ_Company">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Employees_civ_Department" Association="Self.FK_civ_Employees_civ_Department">
+            <End Role="civ_Department" EntitySet="civ_Department" />
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Employees_civ_DepDesgnation" Association="Self.FK_civ_Employees_civ_DepDesgnation">
+            <End Role="civ_DepDesgnation" EntitySet="civ_DepDesgnation" />
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Employees_civ_PerAddress" Association="Self.FK_civ_Employees_civ_PerAddress">
+            <End Role="civ_Address" EntitySet="civ_Address" />
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Employees_civ_Relation" Association="Self.FK_civ_Employees_civ_Relation">
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+            <End Role="civ_Employees1" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Employees_civ_TempAddress" Association="Self.FK_civ_Employees_civ_TempAddress">
+            <End Role="civ_Address" EntitySet="civ_Address" />
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmployeeTransfer_civ_Company1" Association="Self.FK_civ_EmployeeTransfer_civ_Company1">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="civ_EmployeeTransfer" EntitySet="civ_EmployeeTransfer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmployeeTransfer_civ_Project" Association="Self.FK_civ_EmployeeTransfer_civ_Project">
+            <End Role="civ_Project" EntitySet="civ_Project" />
+            <End Role="civ_EmployeeTransfer" EntitySet="civ_EmployeeTransfer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmployeeTransfer_civ_Sites" Association="Self.FK_civ_EmployeeTransfer_civ_Sites">
+            <End Role="civ_Sites" EntitySet="civ_Sites" />
+            <End Role="civ_EmployeeTransfer" EntitySet="civ_EmployeeTransfer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmployeeTypes_civ_Company" Association="Self.FK_civ_EmployeeTypes_civ_Company">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="civ_EmployeeTypes" EntitySet="civ_EmployeeTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmpTypeDeptMap_civ_Department" Association="Self.FK_civ_EmpTypeDeptMap_civ_Department">
+            <End Role="civ_Department" EntitySet="civ_Department" />
+            <End Role="civ_EmpTypeDeptMap" EntitySet="civ_EmpTypeDeptMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmpTypeDeptMap_civ_EmployeeTypes" Association="Self.FK_civ_EmpTypeDeptMap_civ_EmployeeTypes">
+            <End Role="civ_EmployeeTypes" EntitySet="civ_EmployeeTypes" />
+            <End Role="civ_EmpTypeDeptMap" EntitySet="civ_EmpTypeDeptMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Project_civ_Project" Association="Self.FK_civ_Project_civ_Project">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="civ_Project" EntitySet="civ_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Project_civ_Sites" Association="Self.FK_civ_Project_civ_Sites">
+            <End Role="civ_Sites" EntitySet="civ_Sites" />
+            <End Role="civ_Project" EntitySet="civ_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Religon" Association="Self.FK_civ_Religon">
+            <End Role="civ_Religon" EntitySet="civ_Religon" />
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_ReportTo" Association="Self.FK_civ_ReportTo">
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+            <End Role="civ_Employees1" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Sites_civ_Address" Association="Self.FK_civ_Sites_civ_Address">
+            <End Role="civ_Address" EntitySet="civ_Address" />
+            <End Role="civ_Sites" EntitySet="civ_Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Sites_civ_Cities" Association="Self.FK_civ_Sites_civ_Cities">
+            <End Role="civ_Cities" EntitySet="civ_Cities" />
+            <End Role="civ_Sites" EntitySet="civ_Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Sites_civ_Company" Association="Self.FK_civ_Sites_civ_Company">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="civ_Sites" EntitySet="civ_Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Sites_CreatedBy" Association="Self.FK_civ_Sites_CreatedBy">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="civ_Sites" EntitySet="civ_Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Sites_Modifyby" Association="Self.FK_civ_Sites_Modifyby">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="civ_Sites" EntitySet="civ_Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_States_civ_States" Association="Self.FK_civ_States_civ_States">
+            <End Role="civ_Countries" EntitySet="civ_Countries" />
+            <End Role="civ_States" EntitySet="civ_States" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SinacoERPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="PageSize" Type="Int32" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="civ_Company" Relationship="Self.FK_AspNetUsers_civ_Company" FromRole="AspNetUsers" ToRole="civ_Company" />
+          <NavigationProperty Name="civ_Clinet" Relationship="Self.FK_civ_Clinet_AspNetUser" FromRole="AspNetUsers" ToRole="civ_Clinet" />
+          <NavigationProperty Name="civ_Clinet1" Relationship="Self.FK_civ_Clinet_AspNetUsers" FromRole="AspNetUsers" ToRole="civ_Clinet" />
+          <NavigationProperty Name="civ_Sites" Relationship="Self.FK_civ_Sites_CreatedBy" FromRole="AspNetUsers" ToRole="civ_Sites" />
+          <NavigationProperty Name="civ_Sites1" Relationship="Self.FK_civ_Sites_Modifyby" FromRole="AspNetUsers" ToRole="civ_Sites" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="civ_Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="PhoneNo1" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNo2" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="CityIDFK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="civ_Cities" Relationship="Self.FK_civ_Address_civ_Cities" FromRole="civ_Address" ToRole="civ_Cities" />
+          <NavigationProperty Name="civ_Clinet" Relationship="Self.FK_civ_Clinet_civ_Address" FromRole="civ_Address" ToRole="civ_Clinet" />
+          <NavigationProperty Name="civ_Employees" Relationship="Self.FK_civ_Employees_civ_PerAddress" FromRole="civ_Address" ToRole="civ_Employees" />
+          <NavigationProperty Name="civ_Employees1" Relationship="Self.FK_civ_Employees_civ_TempAddress" FromRole="civ_Address" ToRole="civ_Employees" />
+          <NavigationProperty Name="civ_Sites" Relationship="Self.FK_civ_Sites_civ_Address" FromRole="civ_Address" ToRole="civ_Sites" />
+        </EntityType>
+        <EntityType Name="civ_Cities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StateIDFK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="civ_Address" Relationship="Self.FK_civ_Address_civ_Cities" FromRole="civ_Cities" ToRole="civ_Address" />
+          <NavigationProperty Name="civ_States" Relationship="Self.FK_civ_Cities_civ_States" FromRole="civ_Cities" ToRole="civ_States" />
+          <NavigationProperty Name="civ_Sites" Relationship="Self.FK_civ_Sites_civ_Cities" FromRole="civ_Cities" ToRole="civ_Sites" />
+        </EntityType>
+        <EntityType Name="civ_Clinet">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="NTN" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="AddressIDFK" Type="Int32" Nullable="false" />
+          <Property Name="CompanyIDFK" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreadtedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_civ_Clinet_AspNetUser" FromRole="civ_Clinet" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser1" Relationship="Self.FK_civ_Clinet_AspNetUsers" FromRole="civ_Clinet" ToRole="AspNetUsers" />
+          <NavigationProperty Name="civ_Address" Relationship="Self.FK_civ_Clinet_civ_Address" FromRole="civ_Clinet" ToRole="civ_Address" />
+          <NavigationProperty Name="civ_ClinetContactPerson" Relationship="Self.FK_civ_ClinetContactPerson_civ_ClinetContactPerson" FromRole="civ_Clinet" ToRole="civ_ClinetContactPerson" />
+        </EntityType>
+        <EntityType Name="civ_ClinetContactPerson">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="56" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="Binary" MaxLength="64" FixedLength="false" />
+          <Property Name="PhoneNo1" Type="String" MaxLength="56" FixedLength="true" Unicode="false" />
+          <Property Name="PhoneNo2" Type="String" MaxLength="56" FixedLength="true" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="ClientIDFK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="civ_Clinet" Relationship="Self.FK_civ_ClinetContactPerson_civ_ClinetContactPerson" FromRole="civ_ClinetContactPerson" ToRole="civ_Clinet" />
+        </EntityType>
+        <EntityType Name="civ_Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="HomePhone" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="WorkPhone" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="DefaultPageSize" Type="Int32" />
+          <Property Name="CompanyImage" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Country" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPersonFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPersonLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WebURL" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="NTN" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_civ_Company" FromRole="civ_Company" ToRole="AspNetUsers" />
+          <NavigationProperty Name="civ_CompanyType" Relationship="Self.FK_civ_Company_civ_CompanyType" FromRole="civ_Company" ToRole="civ_CompanyType" />
+          <NavigationProperty Name="civ_Department" Relationship="Self.FK_civ_Department_civ_Company" FromRole="civ_Company" ToRole="civ_Department" />
+          <NavigationProperty Name="civ_EmpAttendance" Relationship="Self.FK_civ_EmpAttendance_civ_Company" FromRole="civ_Company" ToRole="civ_EmpAttendance" />
+          <NavigationProperty Name="civ_Employees" Relationship="Self.FK_civ_Employees_civ_Company" FromRole="civ_Company" ToRole="civ_Employees" />
+          <NavigationProperty Name="civ_EmployeeTransfer" Relationship="Self.FK_civ_EmployeeTransfer_civ_Company1" FromRole="civ_Company" ToRole="civ_EmployeeTransfer" />
+          <NavigationProperty Name="civ_EmployeeTypes" Relationship="Self.FK_civ_EmployeeTypes_civ_Company" FromRole="civ_Company" ToRole="civ_EmployeeTypes" />
+          <NavigationProperty Name="civ_Project" Relationship="Self.FK_civ_Project_civ_Project" FromRole="civ_Company" ToRole="civ_Project" />
+          <NavigationProperty Name="civ_Sites" Relationship="Self.FK_civ_Sites_civ_Company" FromRole="civ_Company" ToRole="civ_Sites" />
+        </EntityType>
+        <EntityType Name="civ_CompanyType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="civ_Company" Relationship="Self.FK_civ_Company_civ_CompanyType" FromRole="civ_CompanyType" ToRole="civ_Company" />
+        </EntityType>
+        <EntityType Name="civ_Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="civ_States" Relationship="Self.FK_civ_States_civ_States" FromRole="civ_Countries" ToRole="civ_States" />
+        </EntityType>
+        <EntityType Name="civ_Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyIDFK" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="civ_Company" Relationship="Self.FK_civ_Department_civ_Company" FromRole="civ_Department" ToRole="civ_Company" />
+          <NavigationProperty Name="civ_DepDesgnation" Relationship="Self.FK_civ_DepDesgnation_civ_Department" FromRole="civ_Department" ToRole="civ_DepDesgnation" />
+          <NavigationProperty Name="civ_Employees" Relationship="Self.FK_civ_Employees_civ_Department" FromRole="civ_Department" ToRole="civ_Employees" />
+          <NavigationProperty Name="civ_EmpTypeDeptMap" Relationship="Self.FK_civ_EmpTypeDeptMap_civ_Department" FromRole="civ_Department" ToRole="civ_EmpTypeDeptMap" />
+        </EntityType>
+        <EntityType Name="civ_DepDesgnation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Desgnation" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DepartmentIDFK" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="civ_Department" Relationship="Self.FK_civ_DepDesgnation_civ_Department" FromRole="civ_DepDesgnation" ToRole="civ_Department" />
+          <NavigationProperty Name="civ_Employees" Relationship="Self.FK_civ_Employees_civ_DepDesgnation" FromRole="civ_DepDesgnation" ToRole="civ_Employees" />
+        </EntityType>
+        <EntityType Name="civ_EmpAttendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeIn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TimeOut" Type="DateTime" Precision="3" />
+          <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
+          <Property Name="Bonus_hours" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Pelanty_hours" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Working_hours" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="Comments" Type="Binary" MaxLength="256" FixedLength="false" />
+          <Property Name="Created_date" Type="DateTime" Precision="3" />
+          <Property Name="EmpIDFK" Type="Int32" Nullable="false" />
+          <Property Name="CompanyIDFK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="civ_Company" Relationship="Self.FK_civ_EmpAttendance_civ_Company" FromRole="civ_EmpAttendance" ToRole="civ_Company" />
+          <NavigationProperty Name="civ_Employees" Relationship="Self.FK_civ_EmpAttendance_civ_Employees" FromRole="civ_EmpAttendance" ToRole="civ_Employees" />
+          <NavigationProperty Name="civ_EmpAttendanceList" Relationship="Self.FK_civ_EmpAttendanceList_civ_EmpAttendance" FromRole="civ_EmpAttendance" ToRole="civ_EmpAttendanceList" />
+        </EntityType>
+        <EntityType Name="civ_EmpAttendanceList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeIn" Type="DateTime" Precision="3" />
+          <Property Name="TimeOut" Type="DateTime" Precision="3" />
+          <Property Name="EmpAttdIDFk" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="civ_EmpAttendance" Relationship="Self.FK_civ_EmpAttendanceList_civ_EmpAttendance" FromRole="civ_EmpAttendanceList" ToRole="civ_EmpAttendance" />
+        </EntityType>
+        <EntityType Name="civ_Employees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpCode" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="FatherName" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeptIDFK" Type="Int32" Nullable="false" />
+          <Property Name="DesIDFK" Type="Int32" Nullable="false" />
+          <Property Name="Cnic" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DesiredSalary" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Salary" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="HourRate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ReportTo" Type="Int32" />
+          <Property Name="JoiningDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Dob" Type="DateTime" Precision="3" />
+          <Property Name="ReligionIDFK" Type="Int32" Nullable="false" />
+          <Property Name="PerAddIDFK" Type="Int32" />
+          <Property Name="TempAddIDFK" Type="Int32" />
+          <Property Name="MobileNo" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNo" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dependents" Type="Int32" />
+          <Property Name="EmergencyPersonName" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmPhoneNo" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RelationShip" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="RelationId" Type="Int32" />
+          <Property Name="EmpPic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmpCV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyIDFK" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsMate" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="civ_Address" Relationship="Self.FK_civ_Employees_civ_PerAddress" FromRole="civ_Employees" ToRole="civ_Address" />
+          <NavigationProperty Name="civ_Address1" Relationship="Self.FK_civ_Employees_civ_TempAddress" FromRole="civ_Employees" ToRole="civ_Address" />
+          <NavigationProperty Name="civ_Company" Relationship="Self.FK_civ_Employees_civ_Company" FromRole="civ_Employees" ToRole="civ_Company" />
+          <NavigationProperty Name="civ_Department" Relationship="Self.FK_civ_Employees_civ_Department" FromRole="civ_Employees" ToRole="civ_Department" />
+          <NavigationProperty Name="civ_DepDesgnation" Relationship="Self.FK_civ_Employees_civ_DepDesgnation" FromRole="civ_Employees" ToRole="civ_DepDesgnation" />
+          <NavigationProperty Name="civ_EmpAttendance" Relationship="Self.FK_civ_EmpAttendance_civ_Employees" FromRole="civ_Employees" ToRole="civ_EmpAttendance" />
+          <NavigationProperty Name="civ_Employees1" Relationship="Self.FK_civ_Employees_civ_Relation" FromRole="civ_Employees" ToRole="civ_Employees1" />
+          <NavigationProperty Name="civ_Employees2" Relationship="Self.FK_civ_Employees_civ_Relation" FromRole="civ_Employees1" ToRole="civ_Employees" />
+          <NavigationProperty Name="civ_Religon" Relationship="Self.FK_civ_Religon" FromRole="civ_Employees" ToRole="civ_Religon" />
+          <NavigationProperty Name="civ_Employees11" Relationship="Self.FK_civ_ReportTo" FromRole="civ_Employees" ToRole="civ_Employees1" />
+          <NavigationProperty Name="civ_Employees3" Relationship="Self.FK_civ_ReportTo" FromRole="civ_Employees1" ToRole="civ_Employees" />
+        </EntityType>
+        <EntityType Name="civ_EmployeeTransfer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteIDFK" Type="Int32" Nullable="false" />
+          <Property Name="ProjectIDFK" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="EmployeeIDFK" Type="Int32" Nullable="false" />
+          <Property Name="CompanyIDFK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="civ_Company" Relationship="Self.FK_civ_EmployeeTransfer_civ_Company1" FromRole="civ_EmployeeTransfer" ToRole="civ_Company" />
+          <NavigationProperty Name="civ_Project" Relationship="Self.FK_civ_EmployeeTransfer_civ_Project" FromRole="civ_EmployeeTransfer" ToRole="civ_Project" />
+          <NavigationProperty Name="civ_Sites" Relationship="Self.FK_civ_EmployeeTransfer_civ_Sites" FromRole="civ_EmployeeTransfer" ToRole="civ_Sites" />
+        </EntityType>
+        <EntityType Name="civ_EmployeeTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeType" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CompanyIDFK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="civ_Company" Relationship="Self.FK_civ_EmployeeTypes_civ_Company" FromRole="civ_EmployeeTypes" ToRole="civ_Company" />
+          <NavigationProperty Name="civ_EmpTypeDeptMap" Relationship="Self.FK_civ_EmpTypeDeptMap_civ_EmployeeTypes" FromRole="civ_EmployeeTypes" ToRole="civ_EmpTypeDeptMap" />
+        </EntityType>
+        <EntityType Name="civ_EmpTypeDeptMap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeptIDFK" Type="Int32" Nullable="false" />
+          <Property Name="EmpTypeIDFK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="civ_Department" Relationship="Self.FK_civ_EmpTypeDeptMap_civ_Department" FromRole="civ_EmpTypeDeptMap" ToRole="civ_Department" />
+          <NavigationProperty Name="civ_EmployeeTypes" Relationship="Self.FK_civ_EmpTypeDeptMap_civ_EmployeeTypes" FromRole="civ_EmpTypeDeptMap" ToRole="civ_EmployeeTypes" />
+        </EntityType>
+        <EntityType Name="civ_Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectName" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CompanyIDFK" Type="Int32" Nullable="false" />
+          <Property Name="SiteIDFK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="civ_Company" Relationship="Self.FK_civ_Project_civ_Project" FromRole="civ_Project" ToRole="civ_Company" />
+          <NavigationProperty Name="civ_EmployeeTransfer" Relationship="Self.FK_civ_EmployeeTransfer_civ_Project" FromRole="civ_Project" ToRole="civ_EmployeeTransfer" />
+          <NavigationProperty Name="civ_Sites" Relationship="Self.FK_civ_Project_civ_Sites" FromRole="civ_Project" ToRole="civ_Sites" />
+        </EntityType>
+        <EntityType Name="civ_Religon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReligonName" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="civ_Employees" Relationship="Self.FK_civ_Religon" FromRole="civ_Religon" ToRole="civ_Employees" />
+        </EntityType>
+        <EntityType Name="civ_Sites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteName" Type="String" MaxLength="56" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="Lat" Type="Decimal" Precision="12" Scale="9" />
+          <Property Name="Long" Type="Decimal" Precision="12" Scale="9" />
+          <Property Name="AddressIDFK" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifedBy" Type="Int32" Nullable="false" />
+          <Property Name="ModifedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CompanyIDFK" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ClientIDFK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_civ_Sites_CreatedBy" FromRole="civ_Sites" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser1" Relationship="Self.FK_civ_Sites_Modifyby" FromRole="civ_Sites" ToRole="AspNetUsers" />
+          <NavigationProperty Name="civ_Address" Relationship="Self.FK_civ_Sites_civ_Address" FromRole="civ_Sites" ToRole="civ_Address" />
+          <NavigationProperty Name="civ_Cities" Relationship="Self.FK_civ_Sites_civ_Cities" FromRole="civ_Sites" ToRole="civ_Cities" />
+          <NavigationProperty Name="civ_Company" Relationship="Self.FK_civ_Sites_civ_Company" FromRole="civ_Sites" ToRole="civ_Company" />
+          <NavigationProperty Name="civ_EmployeeTransfer" Relationship="Self.FK_civ_EmployeeTransfer_civ_Sites" FromRole="civ_Sites" ToRole="civ_EmployeeTransfer" />
+          <NavigationProperty Name="civ_Project" Relationship="Self.FK_civ_Project_civ_Sites" FromRole="civ_Sites" ToRole="civ_Project" />
+        </EntityType>
+        <EntityType Name="civ_States">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="State" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CountryIDFK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="civ_Cities" Relationship="Self.FK_civ_Cities_civ_States" FromRole="civ_States" ToRole="civ_Cities" />
+          <NavigationProperty Name="civ_Countries" Relationship="Self.FK_civ_States_civ_States" FromRole="civ_States" ToRole="civ_Countries" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_civ_Company">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Clinet_AspNetUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="civ_Clinet" Type="Self.civ_Clinet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Clinet">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Clinet_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="civ_Clinet" Type="Self.civ_Clinet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Clinet">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Sites_CreatedBy">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="civ_Sites" Type="Self.civ_Sites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Sites">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Sites_Modifyby">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="civ_Sites" Type="Self.civ_Sites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Sites">
+              <PropertyRef Name="ModifedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Address_civ_Cities">
+          <End Role="civ_Cities" Type="Self.civ_Cities" Multiplicity="1" />
+          <End Role="civ_Address" Type="Self.civ_Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Address">
+              <PropertyRef Name="CityIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Clinet_civ_Address">
+          <End Role="civ_Address" Type="Self.civ_Address" Multiplicity="1" />
+          <End Role="civ_Clinet" Type="Self.civ_Clinet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Clinet">
+              <PropertyRef Name="AddressIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Employees_civ_PerAddress">
+          <End Role="civ_Address" Type="Self.civ_Address" Multiplicity="0..1" />
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Employees">
+              <PropertyRef Name="PerAddIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Employees_civ_TempAddress">
+          <End Role="civ_Address" Type="Self.civ_Address" Multiplicity="0..1" />
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Employees">
+              <PropertyRef Name="TempAddIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Sites_civ_Address">
+          <End Role="civ_Address" Type="Self.civ_Address" Multiplicity="1" />
+          <End Role="civ_Sites" Type="Self.civ_Sites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Sites">
+              <PropertyRef Name="AddressIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Cities_civ_States">
+          <End Role="civ_States" Type="Self.civ_States" Multiplicity="1" />
+          <End Role="civ_Cities" Type="Self.civ_Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_States">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Cities">
+              <PropertyRef Name="StateIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Sites_civ_Cities">
+          <End Role="civ_Cities" Type="Self.civ_Cities" Multiplicity="1" />
+          <End Role="civ_Sites" Type="Self.civ_Sites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Sites">
+              <PropertyRef Name="ClientIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_ClinetContactPerson_civ_ClinetContactPerson">
+          <End Role="civ_Clinet" Type="Self.civ_Clinet" Multiplicity="1" />
+          <End Role="civ_ClinetContactPerson" Type="Self.civ_ClinetContactPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Clinet">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="civ_ClinetContactPerson">
+              <PropertyRef Name="ClientIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Company_civ_CompanyType">
+          <End Role="civ_CompanyType" Type="Self.civ_CompanyType" Multiplicity="1" />
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_CompanyType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Company">
+              <PropertyRef Name="CompanyTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Department_civ_Company">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="civ_Department" Type="Self.civ_Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="civ_Department">
+              <PropertyRef Name="CompanyIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmpAttendance_civ_Company">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="civ_EmpAttendance" Type="Self.civ_EmpAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="civ_EmpAttendance">
+              <PropertyRef Name="CompanyIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Employees_civ_Company">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="civ_Employees">
+              <PropertyRef Name="CompanyIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmployeeTransfer_civ_Company1">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="civ_EmployeeTransfer" Type="Self.civ_EmployeeTransfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="civ_EmployeeTransfer">
+              <PropertyRef Name="CompanyIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmployeeTypes_civ_Company">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="civ_EmployeeTypes" Type="Self.civ_EmployeeTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="civ_EmployeeTypes">
+              <PropertyRef Name="CompanyIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Project_civ_Project">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="civ_Project" Type="Self.civ_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="civ_Project">
+              <PropertyRef Name="CompanyIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Sites_civ_Company">
+          <End Role="civ_Company" Type="Self.civ_Company" Multiplicity="1" />
+          <End Role="civ_Sites" Type="Self.civ_Sites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="civ_Sites">
+              <PropertyRef Name="CompanyIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_States_civ_States">
+          <End Role="civ_Countries" Type="Self.civ_Countries" Multiplicity="1" />
+          <End Role="civ_States" Type="Self.civ_States" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Countries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_States">
+              <PropertyRef Name="CountryIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_DepDesgnation_civ_Department">
+          <End Role="civ_Department" Type="Self.civ_Department" Multiplicity="1" />
+          <End Role="civ_DepDesgnation" Type="Self.civ_DepDesgnation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_DepDesgnation">
+              <PropertyRef Name="DepartmentIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Employees_civ_Department">
+          <End Role="civ_Department" Type="Self.civ_Department" Multiplicity="1" />
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Employees">
+              <PropertyRef Name="DeptIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmpTypeDeptMap_civ_Department">
+          <End Role="civ_Department" Type="Self.civ_Department" Multiplicity="1" />
+          <End Role="civ_EmpTypeDeptMap" Type="Self.civ_EmpTypeDeptMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_EmpTypeDeptMap">
+              <PropertyRef Name="DeptIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Employees_civ_DepDesgnation">
+          <End Role="civ_DepDesgnation" Type="Self.civ_DepDesgnation" Multiplicity="1" />
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_DepDesgnation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Employees">
+              <PropertyRef Name="DesIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmpAttendance_civ_Employees">
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="1" />
+          <End Role="civ_EmpAttendance" Type="Self.civ_EmpAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_EmpAttendance">
+              <PropertyRef Name="EmpIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmpAttendanceList_civ_EmpAttendance">
+          <End Role="civ_EmpAttendance" Type="Self.civ_EmpAttendance" Multiplicity="1" />
+          <End Role="civ_EmpAttendanceList" Type="Self.civ_EmpAttendanceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_EmpAttendance">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_EmpAttendanceList">
+              <PropertyRef Name="EmpAttdIDFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Employees_civ_Relation">
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="0..1" />
+          <End Role="civ_Employees1" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Employees1">
+              <PropertyRef Name="RelationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Religon">
+          <End Role="civ_Religon" Type="Self.civ_Religon" Multiplicity="1" />
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Religon">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Employees">
+              <PropertyRef Name="ReligionIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_ReportTo">
+          <End Role="civ_Employees" Type="Self.civ_Employees" Multiplicity="0..1" />
+          <End Role="civ_Employees1" Type="Self.civ_Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Employees1">
+              <PropertyRef Name="ReportTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmployeeTransfer_civ_Project">
+          <End Role="civ_Project" Type="Self.civ_Project" Multiplicity="1" />
+          <End Role="civ_EmployeeTransfer" Type="Self.civ_EmployeeTransfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_EmployeeTransfer">
+              <PropertyRef Name="ProjectIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmployeeTransfer_civ_Sites">
+          <End Role="civ_Sites" Type="Self.civ_Sites" Multiplicity="1" />
+          <End Role="civ_EmployeeTransfer" Type="Self.civ_EmployeeTransfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_EmployeeTransfer">
+              <PropertyRef Name="SiteIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_EmpTypeDeptMap_civ_EmployeeTypes">
+          <End Role="civ_EmployeeTypes" Type="Self.civ_EmployeeTypes" Multiplicity="1" />
+          <End Role="civ_EmpTypeDeptMap" Type="Self.civ_EmpTypeDeptMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_EmployeeTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_EmpTypeDeptMap">
+              <PropertyRef Name="EmpTypeIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_civ_Project_civ_Sites">
+          <End Role="civ_Sites" Type="Self.civ_Sites" Multiplicity="1" />
+          <End Role="civ_Project" Type="Self.civ_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="civ_Sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="civ_Project">
+              <PropertyRef Name="SiteIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SinacoERPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="civ_Address" EntityType="Self.civ_Address" />
+          <EntitySet Name="civ_Cities" EntityType="Self.civ_Cities" />
+          <EntitySet Name="civ_Clinet" EntityType="Self.civ_Clinet" />
+          <EntitySet Name="civ_ClinetContactPerson" EntityType="Self.civ_ClinetContactPerson" />
+          <EntitySet Name="civ_Company" EntityType="Self.civ_Company" />
+          <EntitySet Name="civ_CompanyType" EntityType="Self.civ_CompanyType" />
+          <EntitySet Name="civ_Countries" EntityType="Self.civ_Countries" />
+          <EntitySet Name="civ_Department" EntityType="Self.civ_Department" />
+          <EntitySet Name="civ_DepDesgnation" EntityType="Self.civ_DepDesgnation" />
+          <EntitySet Name="civ_EmpAttendance" EntityType="Self.civ_EmpAttendance" />
+          <EntitySet Name="civ_EmpAttendanceList" EntityType="Self.civ_EmpAttendanceList" />
+          <EntitySet Name="civ_Employees" EntityType="Self.civ_Employees" />
+          <EntitySet Name="civ_EmployeeTransfer" EntityType="Self.civ_EmployeeTransfer" />
+          <EntitySet Name="civ_EmployeeTypes" EntityType="Self.civ_EmployeeTypes" />
+          <EntitySet Name="civ_EmpTypeDeptMap" EntityType="Self.civ_EmpTypeDeptMap" />
+          <EntitySet Name="civ_Project" EntityType="Self.civ_Project" />
+          <EntitySet Name="civ_Religon" EntityType="Self.civ_Religon" />
+          <EntitySet Name="civ_Sites" EntityType="Self.civ_Sites" />
+          <EntitySet Name="civ_States" EntityType="Self.civ_States" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_civ_Company" Association="Self.FK_AspNetUsers_civ_Company">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Clinet_AspNetUser" Association="Self.FK_civ_Clinet_AspNetUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="civ_Clinet" EntitySet="civ_Clinet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Clinet_AspNetUsers" Association="Self.FK_civ_Clinet_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="civ_Clinet" EntitySet="civ_Clinet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Sites_CreatedBy" Association="Self.FK_civ_Sites_CreatedBy">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="civ_Sites" EntitySet="civ_Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Sites_Modifyby" Association="Self.FK_civ_Sites_Modifyby">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="civ_Sites" EntitySet="civ_Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Address_civ_Cities" Association="Self.FK_civ_Address_civ_Cities">
+            <End Role="civ_Cities" EntitySet="civ_Cities" />
+            <End Role="civ_Address" EntitySet="civ_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Clinet_civ_Address" Association="Self.FK_civ_Clinet_civ_Address">
+            <End Role="civ_Address" EntitySet="civ_Address" />
+            <End Role="civ_Clinet" EntitySet="civ_Clinet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Employees_civ_PerAddress" Association="Self.FK_civ_Employees_civ_PerAddress">
+            <End Role="civ_Address" EntitySet="civ_Address" />
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Employees_civ_TempAddress" Association="Self.FK_civ_Employees_civ_TempAddress">
+            <End Role="civ_Address" EntitySet="civ_Address" />
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Sites_civ_Address" Association="Self.FK_civ_Sites_civ_Address">
+            <End Role="civ_Address" EntitySet="civ_Address" />
+            <End Role="civ_Sites" EntitySet="civ_Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Cities_civ_States" Association="Self.FK_civ_Cities_civ_States">
+            <End Role="civ_States" EntitySet="civ_States" />
+            <End Role="civ_Cities" EntitySet="civ_Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Sites_civ_Cities" Association="Self.FK_civ_Sites_civ_Cities">
+            <End Role="civ_Cities" EntitySet="civ_Cities" />
+            <End Role="civ_Sites" EntitySet="civ_Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_ClinetContactPerson_civ_ClinetContactPerson" Association="Self.FK_civ_ClinetContactPerson_civ_ClinetContactPerson">
+            <End Role="civ_Clinet" EntitySet="civ_Clinet" />
+            <End Role="civ_ClinetContactPerson" EntitySet="civ_ClinetContactPerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Company_civ_CompanyType" Association="Self.FK_civ_Company_civ_CompanyType">
+            <End Role="civ_CompanyType" EntitySet="civ_CompanyType" />
+            <End Role="civ_Company" EntitySet="civ_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Department_civ_Company" Association="Self.FK_civ_Department_civ_Company">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="civ_Department" EntitySet="civ_Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmpAttendance_civ_Company" Association="Self.FK_civ_EmpAttendance_civ_Company">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="civ_EmpAttendance" EntitySet="civ_EmpAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Employees_civ_Company" Association="Self.FK_civ_Employees_civ_Company">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmployeeTransfer_civ_Company1" Association="Self.FK_civ_EmployeeTransfer_civ_Company1">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="civ_EmployeeTransfer" EntitySet="civ_EmployeeTransfer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmployeeTypes_civ_Company" Association="Self.FK_civ_EmployeeTypes_civ_Company">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="civ_EmployeeTypes" EntitySet="civ_EmployeeTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Project_civ_Project" Association="Self.FK_civ_Project_civ_Project">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="civ_Project" EntitySet="civ_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Sites_civ_Company" Association="Self.FK_civ_Sites_civ_Company">
+            <End Role="civ_Company" EntitySet="civ_Company" />
+            <End Role="civ_Sites" EntitySet="civ_Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_States_civ_States" Association="Self.FK_civ_States_civ_States">
+            <End Role="civ_Countries" EntitySet="civ_Countries" />
+            <End Role="civ_States" EntitySet="civ_States" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_DepDesgnation_civ_Department" Association="Self.FK_civ_DepDesgnation_civ_Department">
+            <End Role="civ_Department" EntitySet="civ_Department" />
+            <End Role="civ_DepDesgnation" EntitySet="civ_DepDesgnation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Employees_civ_Department" Association="Self.FK_civ_Employees_civ_Department">
+            <End Role="civ_Department" EntitySet="civ_Department" />
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmpTypeDeptMap_civ_Department" Association="Self.FK_civ_EmpTypeDeptMap_civ_Department">
+            <End Role="civ_Department" EntitySet="civ_Department" />
+            <End Role="civ_EmpTypeDeptMap" EntitySet="civ_EmpTypeDeptMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Employees_civ_DepDesgnation" Association="Self.FK_civ_Employees_civ_DepDesgnation">
+            <End Role="civ_DepDesgnation" EntitySet="civ_DepDesgnation" />
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmpAttendance_civ_Employees" Association="Self.FK_civ_EmpAttendance_civ_Employees">
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+            <End Role="civ_EmpAttendance" EntitySet="civ_EmpAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmpAttendanceList_civ_EmpAttendance" Association="Self.FK_civ_EmpAttendanceList_civ_EmpAttendance">
+            <End Role="civ_EmpAttendance" EntitySet="civ_EmpAttendance" />
+            <End Role="civ_EmpAttendanceList" EntitySet="civ_EmpAttendanceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Employees_civ_Relation" Association="Self.FK_civ_Employees_civ_Relation">
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+            <End Role="civ_Employees1" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Religon" Association="Self.FK_civ_Religon">
+            <End Role="civ_Religon" EntitySet="civ_Religon" />
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_ReportTo" Association="Self.FK_civ_ReportTo">
+            <End Role="civ_Employees" EntitySet="civ_Employees" />
+            <End Role="civ_Employees1" EntitySet="civ_Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmployeeTransfer_civ_Project" Association="Self.FK_civ_EmployeeTransfer_civ_Project">
+            <End Role="civ_Project" EntitySet="civ_Project" />
+            <End Role="civ_EmployeeTransfer" EntitySet="civ_EmployeeTransfer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmployeeTransfer_civ_Sites" Association="Self.FK_civ_EmployeeTransfer_civ_Sites">
+            <End Role="civ_Sites" EntitySet="civ_Sites" />
+            <End Role="civ_EmployeeTransfer" EntitySet="civ_EmployeeTransfer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_EmpTypeDeptMap_civ_EmployeeTypes" Association="Self.FK_civ_EmpTypeDeptMap_civ_EmployeeTypes">
+            <End Role="civ_EmployeeTypes" EntitySet="civ_EmployeeTypes" />
+            <End Role="civ_EmpTypeDeptMap" EntitySet="civ_EmpTypeDeptMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_civ_Project_civ_Sites" Association="Self.FK_civ_Project_civ_Sites">
+            <End Role="civ_Sites" EntitySet="civ_Sites" />
+            <End Role="civ_Project" EntitySet="civ_Project" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SinacoERPModelStoreContainer" CdmEntityContainer="SinacoERPEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="SinacoERPModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="SinacoERPModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="SinacoERPModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="SinacoERPModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PageSize" ColumnName="PageSize" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_Address">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_Address">
+              <MappingFragment StoreEntitySet="civ_Address">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="PhoneNo1" ColumnName="PhoneNo1" />
+                <ScalarProperty Name="PhoneNo2" ColumnName="PhoneNo2" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="CityIDFK" ColumnName="CityIDFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_Cities">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_Cities">
+              <MappingFragment StoreEntitySet="civ_Cities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="StateIDFK" ColumnName="StateIDFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_Clinet">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_Clinet">
+              <MappingFragment StoreEntitySet="civ_Clinet">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="NTN" ColumnName="NTN" />
+                <ScalarProperty Name="AddressIDFK" ColumnName="AddressIDFK" />
+                <ScalarProperty Name="CompanyIDFK" ColumnName="CompanyIDFK" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreadtedDate" ColumnName="CreadtedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_ClinetContactPerson">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_ClinetContactPerson">
+              <MappingFragment StoreEntitySet="civ_ClinetContactPerson">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNo1" ColumnName="PhoneNo1" />
+                <ScalarProperty Name="PhoneNo2" ColumnName="PhoneNo2" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="ClientIDFK" ColumnName="ClientIDFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_Company">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_Company">
+              <MappingFragment StoreEntitySet="civ_Company">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="DefaultPageSize" ColumnName="DefaultPageSize" />
+                <ScalarProperty Name="CompanyImage" ColumnName="CompanyImage" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="ContactPersonFirstName" ColumnName="ContactPersonFirstName" />
+                <ScalarProperty Name="ContactPersonLastName" ColumnName="ContactPersonLastName" />
+                <ScalarProperty Name="WebURL" ColumnName="WebURL" />
+                <ScalarProperty Name="NTN" ColumnName="NTN" />
+                <ScalarProperty Name="CompanyTypeId" ColumnName="CompanyTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_CompanyType">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_CompanyType">
+              <MappingFragment StoreEntitySet="civ_CompanyType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_Countries">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_Countries">
+              <MappingFragment StoreEntitySet="civ_Countries">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_Department">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_Department">
+              <MappingFragment StoreEntitySet="civ_Department">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="CompanyIDFK" ColumnName="CompanyIDFK" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_DepDesgnation">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_DepDesgnation">
+              <MappingFragment StoreEntitySet="civ_DepDesgnation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Desgnation" ColumnName="Desgnation" />
+                <ScalarProperty Name="DepartmentIDFK" ColumnName="DepartmentIDFK" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_EmpAttendance">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_EmpAttendance">
+              <MappingFragment StoreEntitySet="civ_EmpAttendance">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+                <ScalarProperty Name="Bonus_hours" ColumnName="Bonus_hours" />
+                <ScalarProperty Name="Pelanty_hours" ColumnName="Pelanty_hours" />
+                <ScalarProperty Name="Working_hours" ColumnName="Working_hours" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="EmpIDFK" ColumnName="EmpIDFK" />
+                <ScalarProperty Name="CompanyIDFK" ColumnName="CompanyIDFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_EmpAttendanceList">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_EmpAttendanceList">
+              <MappingFragment StoreEntitySet="civ_EmpAttendanceList">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="EmpAttdIDFk" ColumnName="EmpAttdIDFk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_Employees">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_Employees">
+              <MappingFragment StoreEntitySet="civ_Employees">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmpCode" ColumnName="EmpCode" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="DeptIDFK" ColumnName="DeptIDFK" />
+                <ScalarProperty Name="DesIDFK" ColumnName="DesIDFK" />
+                <ScalarProperty Name="Cnic" ColumnName="Cnic" />
+                <ScalarProperty Name="DesiredSalary" ColumnName="DesiredSalary" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="HourRate" ColumnName="HourRate" />
+                <ScalarProperty Name="ReportTo" ColumnName="ReportTo" />
+                <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+                <ScalarProperty Name="Dob" ColumnName="Dob" />
+                <ScalarProperty Name="ReligionIDFK" ColumnName="ReligionIDFK" />
+                <ScalarProperty Name="PerAddIDFK" ColumnName="PerAddIDFK" />
+                <ScalarProperty Name="TempAddIDFK" ColumnName="TempAddIDFK" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Dependents" ColumnName="Dependents" />
+                <ScalarProperty Name="EmergencyPersonName" ColumnName="EmergencyPersonName" />
+                <ScalarProperty Name="EmPhoneNo" ColumnName="EmPhoneNo" />
+                <ScalarProperty Name="RelationShip" ColumnName="RelationShip" />
+                <ScalarProperty Name="RelationId" ColumnName="RelationId" />
+                <ScalarProperty Name="EmpPic" ColumnName="EmpPic" />
+                <ScalarProperty Name="EmpCV" ColumnName="EmpCV" />
+                <ScalarProperty Name="CompanyIDFK" ColumnName="CompanyIDFK" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsMate" ColumnName="IsMate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_EmployeeTransfer">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_EmployeeTransfer">
+              <MappingFragment StoreEntitySet="civ_EmployeeTransfer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SiteIDFK" ColumnName="SiteIDFK" />
+                <ScalarProperty Name="ProjectIDFK" ColumnName="ProjectIDFK" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="EmployeeIDFK" ColumnName="EmployeeIDFK" />
+                <ScalarProperty Name="CompanyIDFK" ColumnName="CompanyIDFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_EmployeeTypes">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_EmployeeTypes">
+              <MappingFragment StoreEntitySet="civ_EmployeeTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CompanyIDFK" ColumnName="CompanyIDFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_EmpTypeDeptMap">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_EmpTypeDeptMap">
+              <MappingFragment StoreEntitySet="civ_EmpTypeDeptMap">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DeptIDFK" ColumnName="DeptIDFK" />
+                <ScalarProperty Name="EmpTypeIDFK" ColumnName="EmpTypeIDFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_Project">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_Project">
+              <MappingFragment StoreEntitySet="civ_Project">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CompanyIDFK" ColumnName="CompanyIDFK" />
+                <ScalarProperty Name="SiteIDFK" ColumnName="SiteIDFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_Religon">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_Religon">
+              <MappingFragment StoreEntitySet="civ_Religon">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReligonName" ColumnName="ReligonName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_Sites">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_Sites">
+              <MappingFragment StoreEntitySet="civ_Sites">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="AddressIDFK" ColumnName="AddressIDFK" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifedBy" ColumnName="ModifedBy" />
+                <ScalarProperty Name="ModifedDate" ColumnName="ModifedDate" />
+                <ScalarProperty Name="CompanyIDFK" ColumnName="CompanyIDFK" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ClientIDFK" ColumnName="ClientIDFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civ_States">
+            <EntityTypeMapping TypeName="SinacoERPModel.civ_States">
+              <MappingFragment StoreEntitySet="civ_States">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="CountryIDFK" ColumnName="CountryIDFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="SinacoERPModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
